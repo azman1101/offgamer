@@ -16,9 +16,58 @@ import {
   Menu as MenuIcon,
   Adb as AdbIcon,
 } from '@mui/icons-material';
+import CartIcon from './CartIcon'
+import { Link } from "react-router-dom";
 
 const pages = ['Product', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const Logo = () => (
+  <>
+    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+    <Typography
+      variant="h6"
+      noWrap
+      component="a"
+      href="/"
+      sx={{
+        mr: 2,
+        display: { xs: 'none', md: 'flex' },
+        fontFamily: 'monospace',
+        fontWeight: 700,
+        letterSpacing: '.3rem',
+        color: 'inherit',
+        textDecoration: 'none',
+      }}
+    >
+      LOGO
+    </Typography>
+  </>
+)
+
+const LogoMobile = () => (
+  <>
+    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+    <Typography
+      variant="h5"
+      noWrap
+      component="a"
+      href=""
+      sx={{
+        mr: 2,
+        display: { xs: 'flex', md: 'none' },
+        flexGrow: 1,
+        fontFamily: 'monospace',
+        fontWeight: 700,
+        letterSpacing: '.3rem',
+        color: 'inherit',
+        textDecoration: 'none',
+      }}
+    >
+      LOGO
+    </Typography>
+  </>
+)
 
 export default () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -33,24 +82,7 @@ export default () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+          <Logo />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -85,25 +117,7 @@ export default () => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+          <LogoMobile />
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -115,6 +129,9 @@ export default () => {
               </Button>
             ))}
           </Box>
+          <Link to="/cart">
+            <CartIcon />
+          </Link>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

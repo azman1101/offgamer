@@ -1,11 +1,11 @@
 
 import Home from '@Pages/Home'
-import About from '@Pages/About'
+import Cart from '@Pages/Cart'
 
 const routes = [
   {
-    path: '/about',
-    children: <About />
+    path: '/cart',
+    children: <Cart />
   },
   {
     path: '/',
