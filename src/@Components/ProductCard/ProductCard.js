@@ -15,19 +15,18 @@ export default ({ addToCart, product }) => {
   const { image, name, price, currency, final_price } = product;
   return (
     <Card sx={{
-      height: { xs: 175, sm: 200, md: 460 },
+      height: { xs: 300, sm: 350, md: 460 },
       width: { xs: 175, sm: 200, md: 240 },
-      m: 1,
+      m: { xs: 1/2, sm: 1, md: 1 },
     }}>
       <CardMedia
         component="img"
         image={image}
         sx={{
           height: { xs: 175, sm: 200, md: 300 },
-          width: { xs: 175, sm: 200, md: 240 },
         }}
       />
-      <CardContent>
+      <CardContent sx={{ p: { xs: 1, md: 2 } }}>
         <Typography className='product-name-overflow' variant="body2">
           {name}
         </Typography>

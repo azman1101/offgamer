@@ -19,8 +19,12 @@ import {
 import CartIcon from './CartIcon'
 import { Link } from "react-router-dom";
 
-const pages = ['Product', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [
+  { path: '/', title: 'Product' },
+];
+const settings = [
+  { path: '/cart', title: 'Cart' },
+];
 
 const Logo = () => (
   <>
@@ -36,7 +40,7 @@ const Logo = () => (
         fontFamily: 'monospace',
         fontWeight: 700,
         letterSpacing: '.3rem',
-        color: 'inherit',
+        color: 'white',
         textDecoration: 'none',
       }}
     >
@@ -46,7 +50,7 @@ const Logo = () => (
 )
 
 const LogoMobile = () => (
-  <>
+  <Link to="/">
     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
     <Typography
       variant="h5"
@@ -60,13 +64,13 @@ const LogoMobile = () => (
         fontFamily: 'monospace',
         fontWeight: 700,
         letterSpacing: '.3rem',
-        color: 'inherit',
+        color: 'white',
         textDecoration: 'none',
       }}
     >
       LOGO
     </Typography>
-  </>
+  </Link>
 )
 
 export default ({ h }) => {
@@ -110,22 +114,26 @@ export default ({ h }) => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+                <Link to={page.path}>
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.title}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
           <LogoMobile />
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link to={page.path}>
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.title}
+                </Button>
+              </Link>
             ))}
           </Box>
           <Link to="/cart">
@@ -154,9 +162,11 @@ export default ({ h }) => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <Link to={setting.path}>
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting.title}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>

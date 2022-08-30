@@ -1,6 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import { Link } from "react-router-dom";
+import Button from '@Components/Button'
 
 export default function Cart({ h }) {
   const { carts, setCarts } = h;
@@ -47,6 +48,9 @@ export default function Cart({ h }) {
           </tr>
         </tbody>
       </table>
+      <div>
+        <Button onClick={() => setCarts([])}>Checkout</Button>
+      </div>
     </div >
   );
 }
