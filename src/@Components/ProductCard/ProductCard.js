@@ -32,8 +32,12 @@ export default ({ addToCart, product }) => {
           {name}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ display: 'flex', justifyContent: 'space-between', marginTop: 'auto' }}>
         <Button onClick={() => addToCart(product)}>Buy</Button>
+        <div>
+          <span className='text-decoration-line-through'>${price.toFixed(2)}</span>
+          <h5 className='text-danger'>${final_price.toFixed(2)}</h5>
+        </div>
       </CardActions>
     </Card>
   );
