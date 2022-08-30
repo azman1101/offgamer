@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import p from './products.json';
 
-export default () => {
+export default ({ h }) => {
+  console.log('🚀 vv ~ h carts', h.carts);
   const [search, setSearch] = useState('');
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
@@ -15,7 +16,6 @@ export default () => {
   }, []);
 
   useEffect(() => {
-    console.log('🚀 vv ~ search', search);
     setFilterProducts(
       search.length
         ? products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()))
@@ -23,14 +23,15 @@ export default () => {
     )
   }, [search, products]);
 
-  useEffect(() => {
-    console.log('🚀 vv ~ filterProducts', filterProducts);
-  }, [filterProducts]);
+  const addToCart = (product) => {
+    h.setCarts(carts => [...carts, product]);
+  }
 
   return {
     products,
     filterProducts,
     search,
     setSearch,
+    addToCart,
   }
 }

@@ -11,7 +11,8 @@ import {
 // import ShareIcon from '@mui/icons-material/Share';
 import Button from '@Components/Button'
 
-export default ({ image, name, price, currency, final_price }) => {
+export default ({ addToCart, product }) => {
+  const { image, name, price, currency, final_price } = product;
   return (
     <Card sx={{
       height: { xs: 175, sm: 200, md: 460 },
@@ -32,7 +33,7 @@ export default ({ image, name, price, currency, final_price }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button>Buy</Button>
+        <Button onClick={() => addToCart(product)}>Buy</Button>
       </CardActions>
     </Card>
   );

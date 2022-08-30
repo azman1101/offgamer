@@ -3,8 +3,8 @@ import useHook from './hook';
 import SearchBar from '@Components/SearchBar'
 import ProductCard from '@Components/ProductCard'
 
-export default function Home() {
-  const h = useHook();
+export default function Home(props) {
+  const h = useHook(props);
 
   return (
     <div className="container-lg">
@@ -15,6 +15,7 @@ export default function Home() {
       />
       <ProductCard
         products={h.filterProducts}
+        addToCart={h.addToCart}
       />
     </div>
   );

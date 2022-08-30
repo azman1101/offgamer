@@ -69,7 +69,7 @@ const LogoMobile = () => (
   </>
 )
 
-export default () => {
+export default ({ h }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -83,7 +83,6 @@ export default () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Logo />
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -130,7 +129,7 @@ export default () => {
             ))}
           </Box>
           <Link to="/cart">
-            <CartIcon />
+            <CartIcon totalItems={h.carts.length} />
           </Link>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

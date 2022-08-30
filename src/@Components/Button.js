@@ -17,7 +17,7 @@ export default function BlueButton(props) {
         height,
         ...props.style,
       }}
-      onClick={props.action}
+      {...props}
     >
       <div style={{ fontWeight: 'bold' }}>{props.children || 'Button'}</div>
     </Button>
